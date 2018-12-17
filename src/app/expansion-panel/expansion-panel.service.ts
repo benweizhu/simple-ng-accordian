@@ -16,8 +16,4 @@ export class ExpansionPanelService {
   remove(panel: any) {
     this.panels = this.panels.filter(x => x !== panel);
   }
-
-  fetchAndExpand() {
-    console.log('fetchAndExpand')
-  }
 }

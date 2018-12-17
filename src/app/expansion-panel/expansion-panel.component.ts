@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { ExpansionPanelService } from '../expansion-panel.service';
+import { ExpansionPanelService } from './expansion-panel.service';
+import { Order } from './order';
 
 @Component({
   selector: 'app-expansion-panel',
@@ -11,6 +12,8 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
   @Input() id: string;
 
   private expanded: Boolean = false;
+
+  private order: Order;
 
   constructor(private expansionPanelService: ExpansionPanelService) { }
 
