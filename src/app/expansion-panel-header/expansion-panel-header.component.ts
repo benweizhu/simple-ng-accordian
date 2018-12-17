@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExpansionPanelHeaderComponent implements OnInit {
 
+  @Input() expanded: Boolean;
+
   constructor() { }
 
   ngOnInit() {
