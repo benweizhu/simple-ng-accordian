@@ -22,15 +22,17 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
+    this.expansionPanelService.remove(this);
   }
 
   toggle() {
     if (!this.item) {
-      this.expansionPanelService.fetchOrder('').subscribe((response) => {
-        console.log(response);
+      this.expansionPanelService.fetchOrder('https://raw.githubusercontent.com/benweizhu/simple-ng-custom-expansion-panel/master/src/data/201808084.json').subscribe((response: Item) => {
+        this.item = response;
+        this.expanded = !this.expanded;
       })
+    } else {
+      this.expanded = !this.expanded;
     }
-    this.expanded = !this.expanded;
   }
 }

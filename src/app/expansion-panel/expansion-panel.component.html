@@ -2,5 +2,9 @@
     <button (click)="toggle()">toggle</button>
 </div>
 <div class="expansion-panel-body" *ngIf="expanded">
-    expanded
+    <ul>
+        <li *ngFor="let delivery of item.deliveries">
+            {{ delivery.deliveryNumber }}
+        </li>
+    </ul>
 </div>
