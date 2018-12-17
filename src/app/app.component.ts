@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'simple-ng-accordian';
+  
+  private expandAll: boolean;
+
+  toggleAll() {
+    this.expandAll = !this.expandAll;
+  }
 }

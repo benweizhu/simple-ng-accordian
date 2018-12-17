@@ -2,7 +2,10 @@
     <button (click)="toggle()">toggle</button>
 </div>
 <div class="expansion-panel-body" *ngIf="expanded">
-    <ul>
+    <div *ngIf="loading">
+        loading
+    </div>
+    <ul *ngIf="!loading">
         <li *ngFor="let delivery of item.deliveries">
             {{ delivery.deliveryNumber }}
         </li>

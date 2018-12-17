@@ -9,9 +9,13 @@ import { Item } from './item';
 })
 export class ExpansionPanelComponent implements OnInit, OnDestroy {
 
-  @Input() id: string;
+  @Input() orderNumber: string;
 
-  private expanded: Boolean = false;
+  @Input() itemNumber: string;
+
+  @Input() expanded: boolean = false;
+
+  private loading: boolean = true;
 
   private item: Item;
 
@@ -19,20 +23,18 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.expansionPanelService.add(this);
+    this.expansionPanelService.fetchOrder('https://raw.githubusercontent.com/benweizhu/simple-ng-custom-expansion-panel/master/src/data/201808084.json').subscribe((response: Item) => {
+      this.item = response;
+      this.loading = false;
+    });
   }
 
   ngOnDestroy(): void {
+    console.log('ngOnDestroy')
     this.expansionPanelService.remove(this);
   }
 
   toggle() {
-    if (!this.item) {
-      this.expansionPanelService.fetchOrder('https://raw.githubusercontent.com/benweizhu/simple-ng-custom-expansion-panel/master/src/data/201808084.json').subscribe((response: Item) => {
-        this.item = response;
-        this.expanded = !this.expanded;
-      })
-    } else {
-      this.expanded = !this.expanded;
-    }
+    this.expanded = !this.expanded;
   }
 }
