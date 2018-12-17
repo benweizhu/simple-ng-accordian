@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 @Component({
   selector: 'app-expansion-panel-header',
@@ -12,6 +13,10 @@ export class ExpansionPanelHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  fetchAndExpand() {
+    console.log('fetchAndExpand')
   }
 
 }
