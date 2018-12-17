@@ -1,13 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ExpansionPanelService } from '../expansion-panel.service';
 
 @Component({
   selector: 'app-expansion-panel',
-  template: `<ng-content></ng-content>`,
+  templateUrl: './expansion-panel.component.html',
   styleUrls: ['./expansion-panel.component.scss']
 })
 export class ExpansionPanelComponent implements OnInit, OnDestroy {
-  
+
+  @Input() id: string;
+
+  private expanded: Boolean = false;
+
   constructor(private expansionPanelService: ExpansionPanelService) { }
 
   ngOnInit() {
@@ -16,5 +20,9 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
+  }
+
+  toggle() {
+    this.expanded = !this.expanded;
   }
 }
