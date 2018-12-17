@@ -35,6 +35,7 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
   }
 
   toggle() {
-    this.expanded = !this.expanded;
+    this.expansionPanelService.toggle(this);
+    // this.expanded = !this.expanded;
   }
 }

@@ -8,7 +8,20 @@ export class ExpansionPanelService {
 
   private panels: any[] = [];
 
+  private keepOneOpen: boolean = true;
+
   constructor(private http: HttpClient) { }
+
+  toggle(panel: any) {
+    panel.expanded = !panel.expanded;
+    if (this.keepOneOpen) {
+      this.panels.forEach((x) => {
+        if (x !== panel && x.expanded) {
+          x.expanded = false;
+        }
+      });
+    }
+  }
 
   add(panel: any) {
     panel && this.panels.push(panel);
