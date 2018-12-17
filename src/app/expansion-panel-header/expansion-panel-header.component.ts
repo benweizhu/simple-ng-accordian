@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
+import { ExpansionPanelService } from '../expansion-panel.service';
 
 @Component({
   selector: 'app-expansion-panel-header',
@@ -10,13 +11,15 @@ export class ExpansionPanelHeaderComponent implements OnInit {
 
   @Input() expanded: Boolean;
 
-  constructor() { }
+  constructor(
+    private expansionPanelService: ExpansionPanelService
+  ) { }
 
   ngOnInit() {
   }
 
   fetchAndExpand() {
-    console.log('fetchAndExpand')
+    this.expansionPanelService.fetchAndExpand();
   }
 
 }
